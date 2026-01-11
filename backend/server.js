@@ -7,10 +7,16 @@ const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
 const colors = require("colors")
+const cors = require("cors");
 
 dotenv.config();
 connectDB();
 const app = express();
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "*",
+  credentials: true
+}))
 
 app.use(express.json()); // to accept json data
 
@@ -55,8 +61,8 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
-    // credentials: true,
+    origin: process.env.FRONTEND_URL || "*",
+    credentials: true,
   },
 });
 

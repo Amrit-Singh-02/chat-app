@@ -18,6 +18,7 @@ import {
   import { ChatState } from "../../Context/ChatProvider";
   import UserBadgeItem from "../userAvatar/UserBadgeItem";
   import UserListItem from "../userAvatar/UserListItem";
+import { API_URL } from "../../config/api";
   
   const GroupChatModal = ({ children }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -58,7 +59,7 @@ import {
             Authorization: `Bearer ${user.token}`,
           },
         };
-        const { data } = await axios.get(`/api/user?search=${search}`, config);
+        const { data } = await axios.get(`${API_URL}/api/user?search=${search}`, config);
         console.log(data);
         setLoading(false);
         setSearchResult(data);

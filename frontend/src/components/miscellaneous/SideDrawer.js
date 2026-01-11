@@ -31,6 +31,7 @@ import ProfileModal from "./ProfileModal";
 // import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
+import { API_URL } from "../../config/api";
 
 
 
@@ -79,7 +80,7 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(`${API_URL}/api/user?search=${search}`, config);
 
       setLoading(false);
       setSearchResult(data);

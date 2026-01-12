@@ -1,3 +1,4 @@
+// frontend/src/Context/ChatProvider.js
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -6,8 +7,7 @@ const ChatContext = createContext();
 const ChatProvider = ({ children }) => {
   const [selectedChat, setSelectedChat] = useState();
   const [user, setUser] = useState();
-  // const [notification, setNotification] = useState([]);
-  const [chats, setChats] = useState();
+  const [chats, setChats] = useState([]); // CHANGE THIS LINE - Initialize as empty array
 
   const history = useHistory();
 
@@ -26,8 +26,6 @@ const ChatProvider = ({ children }) => {
         setSelectedChat,
         user,
         setUser,
-        // notification,
-        // setNotification,
         chats,
         setChats,
       }}
